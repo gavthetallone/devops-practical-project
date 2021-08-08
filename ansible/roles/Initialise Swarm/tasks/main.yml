@@ -1,0 +1,7 @@
+---
+# tasks file for Initialise Swarm
+
+- name: Init a new swarm with default parameters
+  docker_swarm:
+    state: present
+  register: swarm_info
