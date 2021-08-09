@@ -7,4 +7,5 @@ pytest-cov
 flask-testing
 selenium
 pymysql
-cryptography
+requests
+requests_mock
