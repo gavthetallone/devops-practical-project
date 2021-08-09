@@ -3,47 +3,36 @@ import random
 
 app = Flask(__name__)
 
-poke_dict_kanto = {
-    "Fire" : "Charmander", 
-    "Water" : "Squirtle", 
-    "Grass" : "Bulbasaur"
-}
-
-poke_dict_johto = {
-    "Fire" : "Cyndaquil",
-    "Water" : "Totodile",
-    "Grass" : "Chikorita"
-}
-
-poke_dict_hoenn = {
-    "Fire" : "Torchic",
-    "Water" : "Mudkip",
-    "Grass" : "Treecko"
-}
-
-poke_dict_sinnoh = {
-    "Fire" : "Chimchar",
-    "Water" : "Piplup",
-    "Grass" : "Turtwig"
+poke_dict_region = {
+        "Kanto" : {
+            "Fire" : "Charmander", 
+            "Water" : "Squirtle", 
+            "Grass" : "Bulbasaur"
+        },
+        "Johto" : {
+            "Fire" : "Cyndaquil",
+            "Water" : "Totodile",
+            "Grass" : "Chikorita"
+        },
+        "Hoenn" : {
+            "Fire" : "Torchic",
+            "Water" : "Mudkip",
+            "Grass" : "Treecko"
+        },
+        "Sinnoh" : {
+            "Fire" : "Chimchar",
+            "Water" : "Piplup",
+            "Grass" : "Turtwig"
+        }
 }
 
 @app.route("/post/name", methods=['POST'])
 def post_name():
     region = request.json['region']
     pokemon_type = request.json['pokemon_type']
+    
+    name = poke_dict_region[region][pokemon_type]
 
-    if region == "Kanto":
-        name = poke_dict_kanto[pokemon_type]
-
-    elif region == "Johto":
-        name = poke_dict_johto[pokemon_type]
-    
-    elif region == "Hoenn":
-        name = poke_dict_hoenn[pokemon_type]
-    
-    elif region == "Sinnoh":
-        name = poke_dict_sinnoh[pokemon_type]
-    
     return name
 
 if __name__ == "__main__":
