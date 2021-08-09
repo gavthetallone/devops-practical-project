@@ -2,7 +2,7 @@ from flask import url_for
 from flask_testing import TestCase
 import requests
 
-from app import app, poke_dict_region
+from service_4.app import app, poke_dict_region
 
 class TestBase(TestCase):
     def create_app(self):

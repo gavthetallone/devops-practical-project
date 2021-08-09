@@ -1,7 +1,7 @@
 from flask import url_for
 from flask_testing import TestCase
 
-from app import app, poke_type
+from service_3.app import app, poke_type
 
 class TestBase(TestCase):
     def create_app(self):
