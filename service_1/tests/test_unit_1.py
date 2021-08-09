@@ -16,18 +16,23 @@ class TestBase(TestCase):
     
     def tearDown(self):
         db.drop_all()
+
+class TestViews(TestBase):
+    def test_start(self):
+        response = self.client.get(url_for("start"))
+        self.assert200(response)
     
 class TestResponse(TestBase):
 
     def test_home(self):
 
         with mock() as m:
-            m.get('http://service-2:5000/get/region', text='Hoenn')
-            m.get('http://service-3:5000/get/pokemon_type', text='Water')
-            m.post('http://service-4:5000/post/name', text='Mudkip')
+            m.get('http://service-2:5000/get/region', text='Kanto')
+            m.get('http://service-3:5000/get/pokemon_type', text='Electric')
+            m.post('http://service-4:5000/post/name', text='Pikachu')
 
             response = self.client.get(url_for('home'))
-
+        
         self.assert200(response)
 
-        self.assertIn('Mudkip', response.data.decode())
+        self.assertIn('Pikachu', response.data.decode())
