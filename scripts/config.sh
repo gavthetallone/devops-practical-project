@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ansible-playbook -i inventory.yaml playbook.yaml
+ansible-playbook -i ansible/inventory.yaml ansible/playbook.yaml
