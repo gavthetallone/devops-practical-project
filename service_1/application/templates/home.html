@@ -1,3 +1,34 @@
+{% if new_pokemon.name == "Mudkip" %}
+    <head>
+        <title>so i herd u liek mudkipz</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/large/mudkip.png">
+    </head>
+{% elif new_pokemon.name == "Pikachu" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/pikachu-alt1.png">
+    </head>
+{% elif new_pokemon.name == "Charmander" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/large/charmander.png">
+    </head>
+{% elif new_pokemon.name == "Squirtle" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/squirtle.png">
+    </head>
+{% elif new_pokemon.name == "Bulbasaur" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/bulbasaur.png">
+    </head>
+{% else %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://image.flaticon.com/icons/png/512/361/361998.png">
+    </head>
+{% endif %}
 
 {% extends 'layout.html' %}
 

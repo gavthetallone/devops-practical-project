@@ -97,5 +97,5 @@ def home():
 
     pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
 
-    return render_template("home.html", pokemons=pokemons)
+    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon)
     
