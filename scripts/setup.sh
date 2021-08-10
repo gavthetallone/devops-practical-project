@@ -5,10 +5,10 @@ set -e
 sudo apt-get update
 sudo apt-get install -y curl jq 
 
-# sudo apt-get python3-dev libpq-dev software-properties-common
+sudo apt-get install python3-dev libpq-dev software-properties-common
 
-# sudo apt-add repository -y --update ppa:ansible/ansible
-# sudo apt-get install -y ansible
+sudo apt-add repository -y --update ppa:ansible/ansible
+sudo apt-get install -y ansible
 
 if [ -z "$(docker --version 2> /dev/null)" ]; then
     curl https://get.docker.com | sudo bash
@@ -21,5 +21,5 @@ if [ -z "$(docker-compose --version 2> /dev/null)" ]; then
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-# docker ps > /dev/null 2>&1 \
-#     || { echo "Session must be restarted to run Docker commands" >&2 && exit 1; }
+docker ps > /dev/null 2>&1 \
+    || { echo "Session must be restarted to run Docker commands" >&2 && exit 1; }
