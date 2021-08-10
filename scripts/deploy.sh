@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rsync -r docker-compose.yaml nginx/nginx_lb.conf swarm-master:
+rsync -r docker-compose.yaml nginx_lb/nginx.conf swarm-master:
 ssh swarm-master << EOF
     sudo usermod -aG docker $USER
     docker login -u ${DOCKER_CREDENTIALS_USR} -p ${DOCKER_CREDENTIALS_PSW}
