@@ -6,3 +6,4 @@ flask-testing
 selenium
 pymysql
 requests
+requests_mock
