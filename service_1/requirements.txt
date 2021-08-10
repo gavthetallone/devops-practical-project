@@ -5,5 +5,4 @@ pytest-cov
 flask-testing
 selenium
 pymysql
-cryptography
 requests
