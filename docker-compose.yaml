@@ -12,7 +12,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE:
-    env_file: .env
 
   service-1:
     container_name: "service-1"
@@ -20,7 +19,6 @@ services:
     build: ./service_1
     environment:
       DATABASE_URI:
-    env_file: .env
     restart: on-failure
     deploy:
       replicas: 4
