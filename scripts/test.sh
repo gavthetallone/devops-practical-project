@@ -8,6 +8,9 @@ sudo apt-get install python3 python3-venv -y > /dev/null
 
 # Install Pip Requirements
 python3 -m venv venv && source venv/bin/activate
+pip3 install --upgrade pip
+pip3 install --upgrade setuptools
+
 for i in {1..4}; do pip3 install -r service_${i}/requirements.txt > /dev/null; done
 
 # Unit Testing
