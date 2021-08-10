@@ -1,0 +1,165 @@
+{% if new_pokemon.name == "Mudkip" %}
+    <head>
+        <title>so i herd u liek mudkipz</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/large/mudkip.png">
+    </head>
+{% elif new_pokemon.name == "Pikachu" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/pikachu-alt1.png">
+    </head>
+{% elif new_pokemon.name == "Charmander" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/large/charmander.png">
+    </head>
+{% elif new_pokemon.name == "Squirtle" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/squirtle.png">
+    </head>
+{% elif new_pokemon.name == "Bulbasaur" %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://img.pokemondb.net/artwork/vector/bulbasaur.png">
+    </head>
+{% else %}
+    <head>
+        <title>Gotta catch 'em all!</title>
+        <link rel="icon" href="https://image.flaticon.com/icons/png/512/361/361998.png">
+    </head>
+{% endif %}
+
+{% extends 'layout.html' %}
+
+{% block body %}
+    <style>
+    .myclass {
+        margin-left: 36.5%;
+        display: inline-block;
+        width: 0.01%;
+    }
+    .myclass2 {
+        margin-left: 10%;
+        display: inline-block;
+        width: 0.01%;
+    }
+    .markyellow {
+        background-color: yellow;
+        color: black;
+        padding-left: 3;
+    }
+    .markred {
+        background-color: red;
+        color: white;
+        padding-left: 3;
+    }
+    .markblue {
+        background-color: blue;
+        color: white;
+        padding-left: 3;
+    }
+    .markgreen {
+        background-color: green;
+        color: white;
+        padding-left: 3;
+    }
+    </style>
+
+    <p class="myclass">
+
+    <a href="{{ url_for('home') }}">
+    
+    <img src="https://image.flaticon.com/icons/png/512/361/361998.png"
+                width="40"
+                height="40">
+    </a>
+    </p>
+    
+    <p class="myclass2">
+    
+    <a href="{{ url_for('home') }}">
+    
+    <img src="https://image.flaticon.com/icons/png/512/361/361998.png"
+                width="40"
+                height="40">
+    </a>
+    </p>
+    
+    <p class="myclass2">
+    
+    <a href="{{ url_for('home') }}">
+    
+    <img src="https://image.flaticon.com/icons/png/512/361/361998.png"
+                width="40"
+                height="40">
+    </a>
+    </p>
+
+    <hr>
+
+    {% for pokemon in pokemons %}
+
+        <br>
+        &emsp;&emsp;&emsp;
+        {{ "Congratulations, you received a... "}} 
+        
+        <h2>&emsp;&emsp;&emsp;&emsp;{{ pokemon.name + "!"}}</h2>
+                
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <img src= {{ pokemon.link }}
+            width="200"
+            height="200">
+
+        &emsp;
+        <strong>{{ "#: " }}</strong>  
+    
+        {{ pokemon.number }}&emsp;<strong>{{" | "}}</strong>&emsp;
+        
+        <strong>{{ "Type: " }}</strong>  
+
+        {% if pokemon.type == "Electric" %}
+        <span class="markyellow">
+        {{ pokemon.type }}
+        </span>
+        &emsp;<strong>{{" | "}}</strong>&emsp;
+
+        {% elif pokemon.type == "Fire" %}
+        <span class="markred">
+        {{ pokemon.type }}
+        </span>
+        &emsp;<strong>{{" | "}}</strong>&emsp;
+
+        {% elif pokemon.type == "Water" %}
+        <span class="markblue">
+        {{ pokemon.type }} 
+        </span>
+        &emsp;<strong>{{" | "}}</strong>&emsp;
+
+        {% elif pokemon.type == "Grass" %}
+        <span class="markgreen">
+        {{ pokemon.type }} 
+        </span>
+        &emsp;<strong>{{" | "}}</strong>&emsp;
+
+        {% endif %}
+
+        <strong>{{ "Region: " }}</strong>
+        {{ pokemon.region }}
+
+        &emsp;
+        <strong>{{" | "}}</strong>&emsp;
+
+        <strong>{{ "Evolution: " }}</strong>
+        {{ pokemon.evolution }}
+
+        <img src= {{ pokemon.link_evolution }}
+        width="100"
+        height="100">
+
+        <br><br>
+        <hr>
+
+    {% endfor %}
+
+{% endblock body %}

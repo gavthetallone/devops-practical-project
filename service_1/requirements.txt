@@ -1,0 +1,10 @@
+flask
+flask-sqlalchemy
+pytest
+pytest-cov
+flask-testing
+selenium
+pymysql
+requests
+requests_mock
+cryptography
