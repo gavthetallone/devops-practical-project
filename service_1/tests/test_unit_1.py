@@ -13,7 +13,7 @@ class TestBase(TestCase):
     
     def setUp(self):
         db.create_all()
-    
+
     def tearDown(self):
         db.drop_all()
 
@@ -36,3 +36,5 @@ class TestResponse(TestBase):
         self.assert200(response)
 
         self.assertIn('Pikachu', response.data.decode())
+        self.assertIn('Kanto', response.data.decode())
+        self.assertIn('Electric', response.data.decode())

@@ -10,15 +10,15 @@ services:
       source: pokemon-volume
       target: /var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD:
-      MYSQL_DATABASE:
+      MYSQL_ROOT_PASSWORD: "squareroot"
+      MYSQL_DATABASE: "data"
 
   service-1:
     container_name: "service-1"
     image: gavthetallone/service-1
     build: ./service_1
     environment:
-      DATABASE_URI:
+      DATABASE_URI: "mysql+pymysql://root:squareroot@pokemon-db:3306/data"
     restart: on-failure
     deploy:
       replicas: 4

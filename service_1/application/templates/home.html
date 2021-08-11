@@ -96,6 +96,17 @@
     </a>
     </p>
 
+    <div style="float:right; padding-top: 18px; padding-right: 25px;">
+    <form action="" method="POST">
+    {{ form.poke_type.label }}  {{ form.poke_type }}
+    <br>
+    {{ form.poke_region.label }}  {{ form.poke_region }}
+    &ensp;
+    {{ form.submit }}
+    </form>
+    </div>
+    <br>
+
     <hr>
 
     {% for pokemon in pokemons %}
