@@ -10,39 +10,31 @@ services:
       source: pokemon-volume
       target: /var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD:
-      MYSQL_DATABASE:
+      MYSQL_ROOT_PASSWORD: "squareroot"
+      MYSQL_DATABASE: "data"
 
   service-1:
     container_name: "service-1"
     image: gavthetallone/service-1
     build: ./service_1
     environment:
-      DATABASE_URI:
+      DATABASE_URI: "mysql+pymysql://root:squareroot@pokemon-db:3306/data"
     restart: on-failure
-    deploy:
-      replicas: 4
 
   service-2:
     container_name: "service-2"
     image: gavthetallone/service-2
     build: ./service_2
-    deploy:
-      replicas: 4
 
   service-3:
     container_name: "service-3"
     image: gavthetallone/service-3
     build: ./service_3
-    deploy:
-      replicas: 4
 
   service-4:
     container_name: "service-4"
     image: gavthetallone/service-4
     build: ./service_4
-    deploy:
-      replicas: 4
 
   pokemon-proxy:
     container_name: pokemon-proxy
@@ -53,7 +45,7 @@ services:
       protocol: tcp
     volumes:
     - type: bind
-      source: ./nginx.conf
+      source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
     depends_on: 
     - service-1
