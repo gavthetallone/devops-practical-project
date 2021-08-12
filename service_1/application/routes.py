@@ -6,20 +6,33 @@ from flask_sqlalchemy import SQLAlchemy
 import requests
 import random
 
-poke_link = {
+# poke_link = {
+#     "Pikachu" : "https://th.bing.com/th/id/OIP.4NhV-E8QFbihBK2p6LU4tQHaG7?pid=ImgDet&rs=1",
+#     "Charmander" : "https://th.bing.com/th/id/R.3826a0bbdcc9e12a949cc3080f9a4e55?rik=jtm4qBBiN1%2fz2g&riu=http%3a%2f%2fwww.pokemasters.net%2fpokedex%2fimages%2fpokemon%2f4000.png&ehk=F9WGO2TvAWorlVyAvA8SWEM0YTs8OjcRCK%2fveScYaDE%3d&risl=&pid=ImgRaw",
+#     "Squirtle" : "https://th.bing.com/th/id/AMMS_7b9ddf692c6df64d86bbe4e96ef46a83?pid=ImgDet&rs=1",
+#     "Bulbasaur" : "https://th.bing.com/th/id/AMMS_9ba4d684e64c19af7c99148ac36af46b?pid=ImgDet&rs=1",
+#     "Cyndaquil" : "https://vignette.wikia.nocookie.net/nintendo/images/9/99/Cyndaquil.png/revision/latest?cb=20141003061613&path-prefix=en",
+#     "Totodile" : "https://th.bing.com/th/id/R.32c471244f37286755a1b72a54cc2a80?rik=1gjd9oO%2by1QQNw&riu=http%3a%2f%2fstatic.giantbomb.com%2fuploads%2foriginal%2f0%2f5150%2f1106948-960099_20090814_screen001.jpg&ehk=AQem7YmVfyrTAWnWQHnePSN%2bE8%2f3s41jheqXSouY3aQ%3d&risl=&pid=ImgRaw&r=0",
+#     "Chikorita" : "https://th.bing.com/th/id/R.189f539cfb66f53801aa4039b2d19611?rik=bLpW1CHTljLx6g&riu=http%3a%2f%2fimages2.wikia.nocookie.net%2f__cb20130105100827%2fpokemontowerdefense%2fimages%2fb%2fbf%2f152Chikorita.png&ehk=9buQXHcC6WYFHTTH1gxc0eSFlLCKLViR9xhwj2KbRT4%3d&risl=&pid=ImgRaw&r=0",
+#     "Torchic" : "https://th.bing.com/th/id/R.abf178cee15982f2d8e404d18e1c9c03?rik=3hMmh8F%2box4glQ&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2fhelixpedia%2fimages%2f4%2f4f%2fTorchic.png%2frevision%2flatest%3fcb%3d20140613012734&ehk=%2f8fJqagM3dIPv6B7eSa%2bDM87SmAEomfuCLUt85JzIcc%3d&risl=&pid=ImgRaw&r=0",
+#     "Mudkip" : "https://th.bing.com/th/id/R.479f79afbe259f711a640784f1ada10d?rik=SF3QyJiippOtbg&riu=http%3a%2f%2fpokemon3d.net%2fwiki%2fimages%2fa%2fae%2fMudkip.png&ehk=OACuigY8woj65Aemgz0bymGEoAVCbEy%2bX9ftRL%2bwG6c%3d&risl=&pid=ImgRaw&r=0",
+#     "Treecko" : "https://th.bing.com/th/id/R.ad6a1e51e1315a8a45dec34a3cf3b356?rik=xQ9%2fX8h%2fXyvFxA&pid=ImgRaw&r=0",
+#     "Chimchar" : "https://vignette.wikia.nocookie.net/nintendo/images/9/9f/Chimchar.png/revision/latest?cb=20160916201643&path-prefix=en",
+#     "Piplup" : "https://cdn2.bulbagarden.net/upload/thumb/b/b1/393Piplup.png/1200px-393Piplup.png",
+#     "Turtwig" : "https://th.bing.com/th/id/R.8a7002960abc336335ba2425d69f344b?rik=5c0dFivTOreYYw&riu=http%3a%2f%2fimages4.wikia.nocookie.net%2f__cb20110927000961%2fpokemon%2fimages%2f5%2f5c%2f387Turtwig.png&ehk=BuBj%2bOGpbEnf9fYuQ5IYzSEcR05cKWAjrIqMSKzZm80%3d&risl=&pid=ImgRaw&r=0"
+# }
+
+pok_link = {
     "Pikachu" : "https://th.bing.com/th/id/OIP.4NhV-E8QFbihBK2p6LU4tQHaG7?pid=ImgDet&rs=1",
-    "Charmander" : "https://th.bing.com/th/id/R.3826a0bbdcc9e12a949cc3080f9a4e55?rik=jtm4qBBiN1%2fz2g&riu=http%3a%2f%2fwww.pokemasters.net%2fpokedex%2fimages%2fpokemon%2f4000.png&ehk=F9WGO2TvAWorlVyAvA8SWEM0YTs8OjcRCK%2fveScYaDE%3d&risl=&pid=ImgRaw",
-    "Squirtle" : "https://th.bing.com/th/id/AMMS_7b9ddf692c6df64d86bbe4e96ef46a83?pid=ImgDet&rs=1",
-    "Bulbasaur" : "https://th.bing.com/th/id/AMMS_9ba4d684e64c19af7c99148ac36af46b?pid=ImgDet&rs=1",
-    "Cyndaquil" : "https://vignette.wikia.nocookie.net/nintendo/images/9/99/Cyndaquil.png/revision/latest?cb=20141003061613&path-prefix=en",
-    "Totodile" : "https://th.bing.com/th/id/R.32c471244f37286755a1b72a54cc2a80?rik=1gjd9oO%2by1QQNw&riu=http%3a%2f%2fstatic.giantbomb.com%2fuploads%2foriginal%2f0%2f5150%2f1106948-960099_20090814_screen001.jpg&ehk=AQem7YmVfyrTAWnWQHnePSN%2bE8%2f3s41jheqXSouY3aQ%3d&risl=&pid=ImgRaw&r=0",
-    "Chikorita" : "https://th.bing.com/th/id/R.189f539cfb66f53801aa4039b2d19611?rik=bLpW1CHTljLx6g&riu=http%3a%2f%2fimages2.wikia.nocookie.net%2f__cb20130105100827%2fpokemontowerdefense%2fimages%2fb%2fbf%2f152Chikorita.png&ehk=9buQXHcC6WYFHTTH1gxc0eSFlLCKLViR9xhwj2KbRT4%3d&risl=&pid=ImgRaw&r=0",
-    "Torchic" : "https://th.bing.com/th/id/R.abf178cee15982f2d8e404d18e1c9c03?rik=3hMmh8F%2box4glQ&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2fhelixpedia%2fimages%2f4%2f4f%2fTorchic.png%2frevision%2flatest%3fcb%3d20140613012734&ehk=%2f8fJqagM3dIPv6B7eSa%2bDM87SmAEomfuCLUt85JzIcc%3d&risl=&pid=ImgRaw&r=0",
-    "Mudkip" : "https://th.bing.com/th/id/R.479f79afbe259f711a640784f1ada10d?rik=SF3QyJiippOtbg&riu=http%3a%2f%2fpokemon3d.net%2fwiki%2fimages%2fa%2fae%2fMudkip.png&ehk=OACuigY8woj65Aemgz0bymGEoAVCbEy%2bX9ftRL%2bwG6c%3d&risl=&pid=ImgRaw&r=0",
-    "Treecko" : "https://th.bing.com/th/id/R.ad6a1e51e1315a8a45dec34a3cf3b356?rik=xQ9%2fX8h%2fXyvFxA&pid=ImgRaw&r=0",
-    "Chimchar" : "https://vignette.wikia.nocookie.net/nintendo/images/9/9f/Chimchar.png/revision/latest?cb=20160916201643&path-prefix=en",
-    "Piplup" : "https://cdn2.bulbagarden.net/upload/thumb/b/b1/393Piplup.png/1200px-393Piplup.png",
-    "Turtwig" : "https://th.bing.com/th/id/R.8a7002960abc336335ba2425d69f344b?rik=5c0dFivTOreYYw&riu=http%3a%2f%2fimages4.wikia.nocookie.net%2f__cb20110927000961%2fpokemon%2fimages%2f5%2f5c%2f387Turtwig.png&ehk=BuBj%2bOGpbEnf9fYuQ5IYzSEcR05cKWAjrIqMSKzZm80%3d&risl=&pid=ImgRaw&r=0"
+    "Elgyem" : "https://vignette.wikia.nocookie.net/es.pokemon/images/c/c0/Elgyem.png/revision/latest?cb=20170617013310",
+    "Mienfoo" : "https://th.bing.com/th/id/R.365abeca028202833190cd2c3ce19d38?rik=rJZjGx5YgqHLLQ&riu=http%3a%2f%2fbogleech.com%2fpokemon%2fallpokes%2f619Mienfoo.png&ehk=RqnM8zxcSt2S3aWR0ZOnK4bJyyXJha%2bSTMvc3Y%2f9kow%3d&risl=&pid=ImgRaw&r=0",
+    "Axew" : "https://th.bing.com/th/id/R.02df78aab4a0adc32d4858039c33da5b?rik=ebuPy4SpkjYpNA&riu=http%3a%2f%2fmedia.pocketmonsters.net%2fimageboard%2f60%2f12814800850032.png&ehk=GPwlgIpSpVblediGaOao%2ff%2fPx22u5WuadRipfgPJ26I%3d&risl=&pid=ImgRaw&r=0",
+    "Espurr" : "https://th.bing.com/th/id/OIP.SaL07BBtwJCWXfSryt5MVQHaG1?pid=ImgDet&rs=1",
+    "Pancham" : "https://gamepedia.cursecdn.com/wiki_marriland/1/1c/674Pancham.png",
+    "Goomy" : "https://th.bing.com/th/id/OIP.2hHb_amTH-h4yV4E4rBrLQHaHa?pid=ImgDet&rs=1",
+    "Cosmog" : "https://2.bp.blogspot.com/-QBZpqa53Lnc/WIttJAUk6BI/AAAAAAAAIQc/CELqv22frBwNoi1cce3pWrkVSK3AC6NfQCLcB/s320/38.png",
+    "Crabrawler" : "https://th.bing.com/th/id/R.f0737faa395266dc48986d164566902e?rik=cbGlKSmKGQPbTA&riu=http%3a%2f%2fcdn.staticneo.com%2fw%2fpokemon%2fa%2faa%2fCrabrawler.png&ehk=wSdohHgZpRCGlmO7zgj71B9M%2fAkO0QXn%2bCkvbCXw6Wk%3d&risl=&pid=ImgRaw&r=0",
+    "Jangmo-o" : "https://vignette.wikia.nocookie.net/es.pokemon/images/0/0b/Jangmo-o.png/revision/latest?cb=20160906132555"
 }
 
 poke_link_evolution = {

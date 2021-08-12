@@ -3,7 +3,8 @@ import random
 
 app = Flask(__name__)
 
-poke_region = ["Kanto", "Johto", "Hoenn", "Sinnoh"]
+# poke_region = ["Kanto", "Johto", "Hoenn", "Sinnoh"]
+poke_region = ["Unova", "Kalos", "Alola"]
 
 @app.route("/get/region")
 def get_region():
