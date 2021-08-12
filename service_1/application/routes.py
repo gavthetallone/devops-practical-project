@@ -35,20 +35,28 @@ pok_link = {
     "Jangmo-o" : "https://vignette.wikia.nocookie.net/es.pokemon/images/0/0b/Jangmo-o.png/revision/latest?cb=20160906132555"
 }
 
+# poke_link_evolution = {
+#     "Raichu" : "https://th.bing.com/th/id/OIP.odEpQFpV8Sg36niYBTNhbAHaHa?pid=ImgDet&rs=1",
+#     "Charmeleon" : "https://th.bing.com/th/id/R.85fcab847827a839ccbf63c13acce7cf?rik=leNOOqWxcX2m7w&riu=http%3a%2f%2fwww.pokemasters.net%2fpokedex%2fimages%2fpokemon%2f5000.png&ehk=jm6TYNyPRGGFUdVlXtMaXh7omdy0r8qxp6pL17EB2N4%3d&risl=&pid=ImgRaw&r=0",
+#     "Wartortle" : "https://img.pokemondb.net/artwork/large/wartortle.jpg",
+#     "Ivysaur" : "https://th.bing.com/th/id/R.dcf25959e2fe6a40ab96570d65bbcfae?rik=HxI8CqhvU0hE7A&riu=http%3a%2f%2fvignette3.wikia.nocookie.net%2fnintendo%2fimages%2f8%2f86%2fIvysaur.png%2frevision%2flatest%3fcb%3d20141002083450%26path-prefix%3den&ehk=GL1go%2b4ytubCdRvwCZgElDzG5EbIsxNqrX1GQ8Y%2bXt0%3d&risl=&pid=ImgRaw&r=0",
+#     "Quilava" : "https://th.bing.com/th/id/R.356bb2f6c017c951bdfc71c6391a7133?rik=%2b8ik2w374vzAiQ&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2fsonic-pokemon-unipedia%2fimages%2f4%2f44%2f188-1.png%2frevision%2flatest%3fcb%3d20140509210523&ehk=0VYP2Lanyh6umAzTraFxlQyS8P2SLyfPgv%2fgp%2fB3Gr4%3d&risl=&pid=ImgRaw&r=0",
+#     "Croconaw" : "https://th.bing.com/th/id/R.e56886ba4f0cc10136f4432e98481eb0?rik=RbZa44%2fiSEARGw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-zpn47JnUBvA%2fT_mPxkEKMKI%2fAAAAAAAAPfY%2fN8fbR3G9QKM%2fs1600%2f159Croconaw%2bwater%2bpokemon%2b2nd%2bgen%2bgold%2band%2bsilver%2bnintendo.png&ehk=RYFrwbdZsofUbEfe%2bPBHPjr3wkWa%2bi0DSvMwrJt07zI%3d&risl=&pid=ImgRaw&r=0",
+#     "Bayleef" : "https://vignette.wikia.nocookie.net/pokemony/images/1/1b/Bayleef.png/revision/latest?cb=20150824101826&path-prefix=pl",
+#     "Combusken" : "https://th.bing.com/th/id/R.558045b6df76691ad6ab4c51f2a2b92f?rik=W6B%2fCZYDN%2brPmQ&riu=http%3a%2f%2fwww.pokemasters.net%2fpokedex%2fimages%2fpokemon%2f256000.png&ehk=5s4L5ovJg9H18bsBzjNATrbKm5%2bc6NMZNqQK4lrTZjY%3d&risl=&pid=ImgRaw&r=0",
+#     "Marshtomp" : "https://th.bing.com/th/id/OIP.7zqqJZIT8ugoFb2dE6w97AHaIj?pid=ImgDet&rs=1",
+#     "Grovyle" : "https://img.pokemondb.net/artwork/large/grovyle.jpg",
+#     "Monferno" : "https://img.pokemondb.net/artwork/large/monferno.jpg",
+#     "Prinplup" : "https://th.bing.com/th/id/OIP.lTAlqPOC20BiU3mp95ojeAHaHa?pid=ImgDet&rs=1",
+#     "Grotle" : "https://th.bing.com/th/id/OIP.qo9SSVMA6yoy7Glp-uaJWwHaHa?pid=ImgDet&rs=1"
+# }
+
 poke_link_evolution = {
     "Raichu" : "https://th.bing.com/th/id/OIP.odEpQFpV8Sg36niYBTNhbAHaHa?pid=ImgDet&rs=1",
-    "Charmeleon" : "https://th.bing.com/th/id/R.85fcab847827a839ccbf63c13acce7cf?rik=leNOOqWxcX2m7w&riu=http%3a%2f%2fwww.pokemasters.net%2fpokedex%2fimages%2fpokemon%2f5000.png&ehk=jm6TYNyPRGGFUdVlXtMaXh7omdy0r8qxp6pL17EB2N4%3d&risl=&pid=ImgRaw&r=0",
-    "Wartortle" : "https://img.pokemondb.net/artwork/large/wartortle.jpg",
-    "Ivysaur" : "https://th.bing.com/th/id/R.dcf25959e2fe6a40ab96570d65bbcfae?rik=HxI8CqhvU0hE7A&riu=http%3a%2f%2fvignette3.wikia.nocookie.net%2fnintendo%2fimages%2f8%2f86%2fIvysaur.png%2frevision%2flatest%3fcb%3d20141002083450%26path-prefix%3den&ehk=GL1go%2b4ytubCdRvwCZgElDzG5EbIsxNqrX1GQ8Y%2bXt0%3d&risl=&pid=ImgRaw&r=0",
-    "Quilava" : "https://th.bing.com/th/id/R.356bb2f6c017c951bdfc71c6391a7133?rik=%2b8ik2w374vzAiQ&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2fsonic-pokemon-unipedia%2fimages%2f4%2f44%2f188-1.png%2frevision%2flatest%3fcb%3d20140509210523&ehk=0VYP2Lanyh6umAzTraFxlQyS8P2SLyfPgv%2fgp%2fB3Gr4%3d&risl=&pid=ImgRaw&r=0",
-    "Croconaw" : "https://th.bing.com/th/id/R.e56886ba4f0cc10136f4432e98481eb0?rik=RbZa44%2fiSEARGw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-zpn47JnUBvA%2fT_mPxkEKMKI%2fAAAAAAAAPfY%2fN8fbR3G9QKM%2fs1600%2f159Croconaw%2bwater%2bpokemon%2b2nd%2bgen%2bgold%2band%2bsilver%2bnintendo.png&ehk=RYFrwbdZsofUbEfe%2bPBHPjr3wkWa%2bi0DSvMwrJt07zI%3d&risl=&pid=ImgRaw&r=0",
-    "Bayleef" : "https://vignette.wikia.nocookie.net/pokemony/images/1/1b/Bayleef.png/revision/latest?cb=20150824101826&path-prefix=pl",
-    "Combusken" : "https://th.bing.com/th/id/R.558045b6df76691ad6ab4c51f2a2b92f?rik=W6B%2fCZYDN%2brPmQ&riu=http%3a%2f%2fwww.pokemasters.net%2fpokedex%2fimages%2fpokemon%2f256000.png&ehk=5s4L5ovJg9H18bsBzjNATrbKm5%2bc6NMZNqQK4lrTZjY%3d&risl=&pid=ImgRaw&r=0",
-    "Marshtomp" : "https://th.bing.com/th/id/OIP.7zqqJZIT8ugoFb2dE6w97AHaIj?pid=ImgDet&rs=1",
-    "Grovyle" : "https://img.pokemondb.net/artwork/large/grovyle.jpg",
-    "Monferno" : "https://img.pokemondb.net/artwork/large/monferno.jpg",
-    "Prinplup" : "https://th.bing.com/th/id/OIP.lTAlqPOC20BiU3mp95ojeAHaHa?pid=ImgDet&rs=1",
-    "Grotle" : "https://th.bing.com/th/id/OIP.qo9SSVMA6yoy7Glp-uaJWwHaHa?pid=ImgDet&rs=1"
+    "Beheeyem" : "https://vignette.wikia.nocookie.net/es.pokemon/images/a/a6/Beheeyem.png/revision/latest?cb=20170615174834",
+    "Mienshao" : "https://assets.pokemon.com/assets/cms2/img/pokedex/full/620.png",
+    "Fraxure" : "https://th.bing.com/th/id/R.9b6c55a509fd797837aed333cfb36c05?rik=T1dQuRr0FJnVXw&riu=http%3a%2f%2fstatic.pokemonpets.com%2fimages%2fmonsters-images-300-300%2f611-Fraxure.png&ehk=NYSK4moO%2bF3SFfeDrM8AzAUKjK%2f0z5Hg5RAtpSFcaqk%3d&risl=&pid=ImgRaw&r=0",
+    "Meowstic" : "",
 }
 
 poke_number = {
