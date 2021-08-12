@@ -1,7 +1,7 @@
 from . import app, db
 from .models import Pokemon
 from .forms import PokeForm
-from flask import request, render_template, jsonify, json
+from flask import redirect, url_for, request, render_template, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import random
@@ -99,6 +99,8 @@ def home():
     db.session.add(new_pokemon)
     db.session.commit()
 
+    route = "home"
+
     if request.method == "POST":
 
         order_attr = {
@@ -122,10 +124,24 @@ def home():
         else:
             pokemons = Pokemon.query.filter_by(region=form.poke_region.data, type=form.poke_type.data).all()
         
-        return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form)
+        return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
 
     else:
         pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
 
-    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form)
-    
+    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
+
+
+@app.route("/delete_pokemon/<int:id>", methods=["GET", "POST"])
+def delete_pokemon(id):
+    pokemon = Pokemon.query.get(id)
+    db.session.delete(pokemon)
+    db.session.commit()
+
+    form = PokeForm()
+    new_pokemon = Pokemon.query.first()
+    pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
+
+    route = "delete"
+
+    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
