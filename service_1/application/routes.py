@@ -132,16 +132,15 @@ def home():
     return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
 
 
-@app.route("/delete_pokemon/<int:id>", methods=["GET", "POST"])
+@app.route("/delete_pokemon/<int:id>")
 def delete_pokemon(id):
     pokemon = Pokemon.query.get(id)
     db.session.delete(pokemon)
     db.session.commit()
 
-    form = PokeForm()
-    new_pokemon = Pokemon.query.first()
+    new_pokemon = Pokemon.query.get(id-1)
     pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
 
     route = "delete"
 
-    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
+    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, route=route)
