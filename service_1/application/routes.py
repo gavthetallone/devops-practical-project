@@ -152,29 +152,24 @@ def home():
     db.session.commit()
 
     if request.method == "POST":
+
+        order_attr = {
+            "#" : Pokemon.number.asc(),
+            "Name" : Pokemon.name.asc(),
+            "" : Pokemon.id.desc()
+        } [form.poke_order.data]
+
         if form.poke_region.data == "All" and form.poke_type.data == "All":
-            if form.poke_order.data == "#":
-                pokemons = Pokemon.query.order_by(Pokemon.number.asc()).all()
-            elif form.poke_order.data == "Name":
-                pokemons = Pokemon.query.order_by(Pokemon.name.asc()).all()
-            elif form.poke_order.data == "":
-                pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
 
+            pokemons = Pokemon.query.order_by(order_attr).all()
+            
         elif form.poke_region.data != "All" and form.poke_type.data == "All":
-            if form.poke_order.data == "#":
-                pokemons = Pokemon.query.filter_by(region=form.poke_region.data).order_by(Pokemon.number.asc())
-            elif form.poke_order.data == "Name":
-                pokemons = Pokemon.query.filter_by(region=form.poke_region.data).order_by(Pokemon.name.asc())
-            elif form.poke_order.data == "":
-                pokemons = Pokemon.query.filter_by(region=form.poke_region.data).all()
 
+            pokemons = Pokemon.query.filter_by(region=form.poke_region.data).order_by(order_attr).all()
+        
         elif form.poke_region.data == "All" and form.poke_type.data != "All":
-            if form.poke_order.data == "#":
-                pokemons = Pokemon.query.filter_by(type=form.poke_type.data).order_by(Pokemon.number.asc())
-            elif form.poke_order.data == "Name":
-                pokemons = Pokemon.query.filter_by(type=form.poke_type.data).order_by(Pokemon.name.asc())
-            elif form.poke_order.data == "":
-                pokemons = Pokemon.query.filter_by(type=form.poke_type.data).all()
+
+            pokemons = Pokemon.query.filter_by(type=form.poke_type.data).order_by(order_attr).all()
             
         else:
             pokemons = Pokemon.query.filter_by(region=form.poke_region.data, type=form.poke_type.data).all()
@@ -184,5 +179,6 @@ def home():
     else:
         pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
 
+    
     return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form)
     
