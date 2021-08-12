@@ -1,6 +1,8 @@
 from . import app, db
 from .models import Pokemon
+from .forms import PokeForm
 from flask import request, render_template, jsonify, json
+from flask_sqlalchemy import SQLAlchemy
 import requests
 import random
 
@@ -73,8 +75,10 @@ def start():
 
     return render_template("start.html")
 
-@app.route("/home")
+@app.route("/home", methods=["GET", "POST"])
 def home():
+    form = PokeForm()
+
     region = requests.get('http://service-2:5000/get/region').text
     pokemon_type = requests.get('http://service-3:5000/get/pokemon_type').text
 
@@ -95,7 +99,33 @@ def home():
     db.session.add(new_pokemon)
     db.session.commit()
 
-    pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
+    if request.method == "POST":
 
-    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon)
+        order_attr = {
+            "#" : Pokemon.number.asc(),
+            "Name" : Pokemon.name.asc(),
+            "" : Pokemon.id.desc()
+        } [form.poke_order.data]
+
+        if form.poke_region.data == "All" and form.poke_type.data == "All":
+
+            pokemons = Pokemon.query.order_by(order_attr).all()
+            
+        elif form.poke_region.data != "All" and form.poke_type.data == "All":
+
+            pokemons = Pokemon.query.filter_by(region=form.poke_region.data).order_by(order_attr).all()
+        
+        elif form.poke_region.data == "All" and form.poke_type.data != "All":
+
+            pokemons = Pokemon.query.filter_by(type=form.poke_type.data).order_by(order_attr).all()
+            
+        else:
+            pokemons = Pokemon.query.filter_by(region=form.poke_region.data, type=form.poke_type.data).all()
+        
+        return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form)
+
+    else:
+        pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
+
+    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form)
     

@@ -9,4 +9,3 @@ selenium
 pymysql
 requests
 requests_mock
-cryptography
