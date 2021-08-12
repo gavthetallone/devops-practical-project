@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rsync -r docker-compose.yaml nginx/nginx.conf swarm-master:
+rsync -r docker-compose.yaml nginx swarm-master:
 
 ssh swarm-master << EOF
     export DATABASE_URI=${DATABASE_URI}

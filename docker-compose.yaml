@@ -53,7 +53,7 @@ services:
       protocol: tcp
     volumes:
     - type: bind
-      source: ./nginx.conf
+      source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
     depends_on: 
     - service-1
