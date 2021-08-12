@@ -5,7 +5,7 @@ set -e
 sudo apt-get update
 sudo apt-get install -y curl jq 
 
-sudo apt-get install python3-dev libpq-dev software-properties-common
+sudo apt-get install python3-dev libpq-dev software-properties-common -y
 
 sudo apt-add-repository -y --update ppa:ansible/ansible
 sudo apt-get install -y ansible
