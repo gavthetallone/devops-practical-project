@@ -22,14 +22,14 @@ import random
 #     "Turtwig" : "https://th.bing.com/th/id/R.8a7002960abc336335ba2425d69f344b?rik=5c0dFivTOreYYw&riu=http%3a%2f%2fimages4.wikia.nocookie.net%2f__cb20110927000961%2fpokemon%2fimages%2f5%2f5c%2f387Turtwig.png&ehk=BuBj%2bOGpbEnf9fYuQ5IYzSEcR05cKWAjrIqMSKzZm80%3d&risl=&pid=ImgRaw&r=0"
 # }
 
-pok_link = {
-    "Pikachu" : "https://th.bing.com/th/id/OIP.4NhV-E8QFbihBK2p6LU4tQHaG7?pid=ImgDet&rs=1",
+poke_link = {
+    "Pikachu" : "https://gamingreinvented.com/wp-content/uploads/2017/09/OriginalCapPikachu.png",
     "Elgyem" : "https://vignette.wikia.nocookie.net/es.pokemon/images/c/c0/Elgyem.png/revision/latest?cb=20170617013310",
     "Mienfoo" : "https://th.bing.com/th/id/R.365abeca028202833190cd2c3ce19d38?rik=rJZjGx5YgqHLLQ&riu=http%3a%2f%2fbogleech.com%2fpokemon%2fallpokes%2f619Mienfoo.png&ehk=RqnM8zxcSt2S3aWR0ZOnK4bJyyXJha%2bSTMvc3Y%2f9kow%3d&risl=&pid=ImgRaw&r=0",
     "Axew" : "https://th.bing.com/th/id/R.02df78aab4a0adc32d4858039c33da5b?rik=ebuPy4SpkjYpNA&riu=http%3a%2f%2fmedia.pocketmonsters.net%2fimageboard%2f60%2f12814800850032.png&ehk=GPwlgIpSpVblediGaOao%2ff%2fPx22u5WuadRipfgPJ26I%3d&risl=&pid=ImgRaw&r=0",
-    "Espurr" : "https://th.bing.com/th/id/OIP.SaL07BBtwJCWXfSryt5MVQHaG1?pid=ImgDet&rs=1",
-    "Pancham" : "https://gamepedia.cursecdn.com/wiki_marriland/1/1c/674Pancham.png",
-    "Goomy" : "https://th.bing.com/th/id/OIP.2hHb_amTH-h4yV4E4rBrLQHaHa?pid=ImgDet&rs=1",
+    "Espurr" : "https://vignette.wikia.nocookie.net/omniversal-battlefield/images/1/1c/1871454-espurrpng-espurr-png-391_500_preview.png/revision/latest?cb=20190309054458",
+    "Pancham" : "https://th.bing.com/th/id/R.1f7b8ed3b122c4fbfc571202e7720e12?rik=Vw44NVvZo3vi4Q&riu=http%3a%2f%2fpokemon3d.net%2fwiki%2fimages%2fthumb%2fc%2fc9%2fPancham.png%2f1200px-Pancham.png&ehk=keraLsY81iAd1GaKrmqP1S65ucB3HQ5IaSf47d2%2bzVA%3d&risl=&pid=ImgRaw&r=0",
+    "Goomy" : "https://vignette.wikia.nocookie.net/pokemon/images/c/c6/704Goomy_XY_anime.png/revision/latest?cb=20160815051228",
     "Cosmog" : "https://2.bp.blogspot.com/-QBZpqa53Lnc/WIttJAUk6BI/AAAAAAAAIQc/CELqv22frBwNoi1cce3pWrkVSK3AC6NfQCLcB/s320/38.png",
     "Crabrawler" : "https://th.bing.com/th/id/R.f0737faa395266dc48986d164566902e?rik=cbGlKSmKGQPbTA&riu=http%3a%2f%2fcdn.staticneo.com%2fw%2fpokemon%2fa%2faa%2fCrabrawler.png&ehk=wSdohHgZpRCGlmO7zgj71B9M%2fAkO0QXn%2bCkvbCXw6Wk%3d&risl=&pid=ImgRaw&r=0",
     "Jangmo-o" : "https://vignette.wikia.nocookie.net/es.pokemon/images/0/0b/Jangmo-o.png/revision/latest?cb=20160906132555"
@@ -52,43 +52,74 @@ pok_link = {
 # }
 
 poke_link_evolution = {
-    "Raichu" : "https://th.bing.com/th/id/OIP.odEpQFpV8Sg36niYBTNhbAHaHa?pid=ImgDet&rs=1",
+    "Raichu" : "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20160815220038/Raichu.png",
     "Beheeyem" : "https://vignette.wikia.nocookie.net/es.pokemon/images/a/a6/Beheeyem.png/revision/latest?cb=20170615174834",
     "Mienshao" : "https://assets.pokemon.com/assets/cms2/img/pokedex/full/620.png",
     "Fraxure" : "https://th.bing.com/th/id/R.9b6c55a509fd797837aed333cfb36c05?rik=T1dQuRr0FJnVXw&riu=http%3a%2f%2fstatic.pokemonpets.com%2fimages%2fmonsters-images-300-300%2f611-Fraxure.png&ehk=NYSK4moO%2bF3SFfeDrM8AzAUKjK%2f0z5Hg5RAtpSFcaqk%3d&risl=&pid=ImgRaw&r=0",
-    "Meowstic" : "",
+    "Meowstic" : "https://vignette.wikia.nocookie.net/pokemony/images/0/0b/Meowstic.png/revision/latest?cb=20160529081619&path-prefix=pl",
+    "Pangoro" : "https://orig00.deviantart.net/8ac2/f/2017/072/3/5/pangoro_by_porygon2z-db2660z.png",
+    "Sliggoo" : "https://th.bing.com/th/id/R.a2ed1883d635ee8d8eb67fce891f6593?rik=UEsVrdADEkhf9A&riu=http%3a%2f%2fcdn3.bulbagarden.net%2fuploads%2fpokemonsunmoon%2fpokemon_stat%2fimage%2f791%2f705Sliggoo.png&ehk=MoBR9TeasfjCE1aq%2fbCZ6AFMEqZcUtkg93qk278LDp8%3d&risl=&pid=ImgRaw&r=0",
+    "Cosmoem" : "https://th.bing.com/th/id/R.9d20b4cab9dbebbd139e3da1aaa0219a?rik=pMD5muAzEiFpfQ&pid=ImgRaw&r=0",
+    "Crabominable" : "https://www.pokepedia.fr/images/a/a4/Crabominable-SL.png",
+    "Hakamo-o" : "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/f/fc/latest/20161014162123/Hakamo-o.png/1200px-Hakamo-o.png",
 }
+
+# poke_number = {
+#     "Pikachu" : "025",
+#     "Charmander" : "004",
+#     "Squirtle" : "007",
+#     "Bulbasaur" : "001",
+#     "Cyndaquil" : "155",
+#     "Totodile" : "158",
+#     "Chikorita" : "152",
+#     "Torchic" : "255",
+#     "Mudkip" : "258",
+#     "Treecko" : "252",
+#     "Chimchar" : "390",
+#     "Piplup" : "393",
+#     "Turtwig" : "387"
+# }
 
 poke_number = {
     "Pikachu" : "025",
-    "Charmander" : "004",
-    "Squirtle" : "007",
-    "Bulbasaur" : "001",
-    "Cyndaquil" : "155",
-    "Totodile" : "158",
-    "Chikorita" : "152",
-    "Torchic" : "255",
-    "Mudkip" : "258",
-    "Treecko" : "252",
-    "Chimchar" : "390",
-    "Piplup" : "393",
-    "Turtwig" : "387"
+    "Elgyem" : "605",
+    "Mienfoo" : "619",
+    "Axew" : "610",
+    "Espurr" : "677",
+    "Pancham" : "674",
+    "Goomy" : "704",
+    "Cosmog" : "789",
+    "Crabrawler" : "739",
+    "Jangmo-o" : "782"
 }
+
+# poke_evolution = {
+#     "Pikachu" : "Raichu",
+#     "Charmander" : "Charmeleon",
+#     "Squirtle" : "Wartortle",
+#     "Bulbasaur" : "Ivysaur",
+#     "Cyndaquil" : "Quilava",
+#     "Totodile" : "Croconaw",
+#     "Chikorita" : "Bayleef",
+#     "Torchic" : "Combusken",
+#     "Mudkip" : "Marshtomp",
+#     "Treecko" : "Grovyle",
+#     "Chimchar" : "Monferno",
+#     "Piplup" : "Prinplup",
+#     "Turtwig" : "Grotle"
+# }
 
 poke_evolution = {
     "Pikachu" : "Raichu",
-    "Charmander" : "Charmeleon",
-    "Squirtle" : "Wartortle",
-    "Bulbasaur" : "Ivysaur",
-    "Cyndaquil" : "Quilava",
-    "Totodile" : "Croconaw",
-    "Chikorita" : "Bayleef",
-    "Torchic" : "Combusken",
-    "Mudkip" : "Marshtomp",
-    "Treecko" : "Grovyle",
-    "Chimchar" : "Monferno",
-    "Piplup" : "Prinplup",
-    "Turtwig" : "Grotle"
+    "Elgyem" : "Beheeyem",
+    "Mienfoo" : "Mienshao",
+    "Axew" : "Fraxure",
+    "Espurr" : "Meowstic",
+    "Pancham" : "Pangoro",
+    "Goomy" : "Sliggoo",
+    "Cosmog" : "Cosmoem",
+    "Crabrawler" : "Crabominable",
+    "Jangmo-o" : "Hakamo-o"
 }
 
 @app.route("/")
