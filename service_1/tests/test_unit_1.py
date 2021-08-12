@@ -38,3 +38,24 @@ class TestResponse(TestBase):
         self.assertIn('Pikachu', response.data.decode())
         self.assertIn('Kanto', response.data.decode())
         self.assertIn('Electric', response.data.decode())
+
+    def test_form(self):
+
+        with mock() as m:
+            m.get('http://service-2:5000/get/region', text='Kanto')
+            m.get('http://service-3:5000/get/pokemon_type', text='Electric')
+            m.post('http://service-4:5000/post/name', text='Pikachu')
+
+            response = self.client.post(url_for('home'), 
+        
+                data = dict(
+                    poke_order = "#",
+                    poke_type = "Electric",
+                    poke_region = "Kanto"
+                )
+            )
+        
+        self.assert200(response)
+        self.assertIn('Pikachu', response.data.decode())
+        self.assertIn('Kanto', response.data.decode())
+        self.assertIn('Electric', response.data.decode())
