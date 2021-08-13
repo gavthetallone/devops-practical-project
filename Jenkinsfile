@@ -16,6 +16,12 @@ pipeline{
             steps{
                 sh "bash scripts/test.sh"
             }
+            post {
+                always {
+                step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage.xml'])
+                junit 'junit.xml'
+                }
+            }
         }
         stage('Build and Push Images'){
             steps{
