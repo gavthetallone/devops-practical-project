@@ -21,28 +21,28 @@ services:
       DATABASE_URI:
     restart: on-failure
     deploy:
-      replicas: 10
+      replicas: 3
 
   service-2:
     container_name: "service-2"
     image: gavthetallone/service-2
     build: ./service_2
     deploy:
-      replicas: 10
+      replicas: 3
 
   service-3:
     container_name: "service-3"
     image: gavthetallone/service-3
     build: ./service_3
     deploy:
-      replicas: 10
+      replicas: 3
 
   service-4:
     container_name: "service-4"
     image: gavthetallone/service-4
     build: ./service_4
     deploy:
-      replicas: 10
+      replicas: 3
 
   pokemon-proxy:
     container_name: pokemon-proxy
