@@ -151,6 +151,8 @@ def home():
     db.session.add(new_pokemon)
     db.session.commit()
 
+    route = "home"
+
     if request.method == "POST":
 
         order_attr = {
@@ -174,11 +176,24 @@ def home():
         else:
             pokemons = Pokemon.query.filter_by(region=form.poke_region.data, type=form.poke_type.data).all()
         
-        return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form)
+        return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
 
     else:
         pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
 
     
-    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form)
-    
+    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
+
+
+@app.route("/delete_pokemon/<int:id>")
+def delete_pokemon(id):
+    pokemon = Pokemon.query.get(id)
+    db.session.delete(pokemon)
+    db.session.commit()
+
+    new_pokemon = Pokemon.query.get(id-1)
+    pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
+
+    route = "delete"
+
+    return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, route=route)

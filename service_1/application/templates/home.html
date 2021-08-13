@@ -111,6 +111,7 @@
     </a>
     </p>
 
+    {% if route == "home" %}
     <div style="float:right; padding-top: 2px; padding-right: 30px;">
     <form action="" method="POST">
     {{ form.poke_type.label }}  {{ form.poke_type }}
@@ -122,11 +123,15 @@
     {{ form.submit }}
     </form>
     </div>
+
+    {% endif %}
     <br>
 
     <hr>
 
     {% for pokemon in pokemons %}
+
+        <a href="{{ url_for('delete_pokemon', id=pokemon.id) }}", style="float:right; text-decoration:none;">❌</a>
 
         <br>
         &emsp;&emsp;&emsp;
