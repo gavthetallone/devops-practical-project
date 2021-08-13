@@ -7,7 +7,7 @@ services:
     image: mysql:latest
     volumes:
     - type: volume
-      source: pokemon-volume
+      source: pokemon-volume2
       target: /var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD:
@@ -59,4 +59,4 @@ services:
     - service-1
 
 volumes:
-  pokemon-volume:
+  pokemon-volume2:
