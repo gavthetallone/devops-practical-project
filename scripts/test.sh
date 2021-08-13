@@ -14,4 +14,4 @@ pip3 install --upgrade setuptools
 for i in {1..4}; do pip3 install -r service_${i}/requirements.txt > /dev/null; done
 
 # Unit Testing
-python3 -m pytest --cov --cov-config=.coveragerc
+python3 -m pytest --cov --cov-config=.coveragerc --cov-report xml --junitxml junit.xml
