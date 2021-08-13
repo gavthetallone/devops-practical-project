@@ -18,8 +18,8 @@ pipeline{
             }
             post {
                 always {
-                step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml'])
-                junit 'output/coverage/junit/junit.xml'
+                step([$class: 'CoberturaPublisher', coberturaReportFile: 'coverage.xml'])
+                junit 'junit.xml'
                 }
             }
         }
