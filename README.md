@@ -84,17 +84,46 @@ The tech stack I used for this project is as follows:
 
 ### Entity Diagram
 
+Here is the initial entity diagram for this application:
+
+![Initial ED](./images/initial-ed.png)
+<br><br>
+Here is the final entity diagram:
+
+![Final ED](./images/updated-ed.png)
 <br><br>
 
 ## Development
 ---
 <br>
 
-### Unit Testing in VS Code
+### Jenkins Pipeline
 
-<br>
+![Jenkins Pipeline](./images/jenkins-pipeline.png)
 
 ### Unit Testing with CI server
+
+Here is the testing output from the Jenkins pipeline, which shows 7 passed tests and 98% overall coverage.
+
+![Test Output](./images/jenkins-test.png)
+<br><br>
+
+Here is the Cobertura coverage report, which shows the test coverage across all areas of the application:
+
+![Cobertura](./images/cobertura.png)
+<br><br>
+
+Here is the JUnit test output, which reports 0 failures for every function in every test class:
+
+![JUnit](./images/junit.png)
+<br><br>
+
+Here is the webhook configured to trigger a Jenkins build once there has been a push to GitHub. This allows for automated testing for every change that is made to the source code:
+
+![GitHub Webhook](./images/github-webhook.png)
+<br><br>
+
+![Jenkins-side Webhook](./images/jenkins-webhook.png)
 
 <br><br>
 
@@ -105,7 +134,20 @@ The tech stack I used for this project is as follows:
 [Insert here stuff about changing code for forms in application/routes to "order_attr" dictionary which simplified code and boosted test coverage]
 
 [Delete Selenium and unnneccesary dependencies]
+<br><br>
+
 ### Front-End
+
+![Start Page](./images/start-page.png)
+<br><br>
+
+![Home Page](./images/home-page.png)
+<br><br>
+
+![Home Page 2](./images/home-page2.png)
+<br><br>
+
+![Home Page 3](./images/home-page3.png)
 
 <br>
 
