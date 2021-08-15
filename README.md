@@ -5,10 +5,7 @@
 ## Contents
 * [Introduction](#introduction)
 	* [Objective](#objective) 
-	* [Outline](#outline) 
-		* [Service 1](#service-1)
-		* [Service 2 & 3](#service-2-and-3)
-		* [Service 4](#service-4)
+	* [Outline](#outline)
 * [Project Plan](#project-plan)
 	* [CI-CD Pipeline](#ci-cd-pipeline)
 	* [Services Diagram](#services-diagram) 
@@ -38,12 +35,12 @@
 The overall objective with this project is the following: 
 
     - To create a service-orientated architecture for an application, composed of at least 4 services that work together.
+<br><br>
 
 ### Outline
 
 The application created for this project is a Pokémon randomiser. Just like in the original series of Pokémon games, users will be able to choose from 1 of 3 Poké Balls that appear on the screen, in which they will then receive a Pokémon. In this application, the Pokémon that the user receives will be generated completely randomly.
 
-<br>
 
 #### Service 1
 
@@ -55,7 +52,6 @@ The core service. This will display the front end of the application in which th
 These will both generate a random “Object”. In this case, the objects are:
 - The region that the Pokémon comes from e.g. Kanto or Johto.
 - The type of Pokémon e.g. Fire or Water.
-<br>
 
 #### Service 4
 
@@ -267,8 +263,9 @@ The user can filter the list of Pokémon by region or type and order the list by
 
 For future sprints I would:
 *	Implement integration testing with Selenium.
-*	Add a user login feature to personalise the user experience.
+*	Improve test coverage to 100%.
 *	Implement full CRUD functionality.
+*	Add a user login feature to personalise the user experience.
 *	Add the entire catalogue of Pokémon from every region to this application, while displaying more stats and 			attributes for each Pokémon.
 
 <br>
