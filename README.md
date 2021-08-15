@@ -6,14 +6,21 @@
 * [Introduction](#introduction)
 	* [Objective](#objective) 
 	* [Outline](#outline) 
+		* [Service 1](#service-1)
+		* [Service 2 & 3](#service-2-and-3)
+		* [Service 4](#service-4)
 * [Project Plan](#project-plan)
-	* [Continuous Integration Pipeline](#continuous-integration-pipeline)
-	* [Risk Assessment](#risk-assessment)  
+	* [CI-CD Pipeline](#ci-cd-pipeline)
+	* [Services Diagram](#services-diagram) 
+	* [Infrastructure Diagram](#infrastructure-diagram) 
+	* [Risk Assessment](#risk-assessment)
 	* [Kanban Board](#kanban-board)
 	* [Entity Diagram](#entity-diagram)
 * [Development](#development)
+	* [Jenkins Pipeline](#jenkins-pipeline)
 	* [Unit Testing in VS Code](#unit-testing-in-vs-code)
 	* [Unit Testing with CI server](#unit-testing-with-ci-server)
+	* [Refactoring](#refactoring)
 	* [Front-End](#front-end)
 * [Footer](#footer)
 	* [Future Improvements](#future-improvements)
@@ -21,6 +28,7 @@
 	* [Acknowledgements](#acknowledgements)
 
 <br><br>
+
 ## Introduction
 ---
 <br>
@@ -42,7 +50,7 @@ The application created for this project is a Pokémon randomiser. Just like in 
 The core service. This will display the front end of the application in which the user will interact with. It will also be responsible for communicating with the other 3 services, and persisting data in an SQL database.
 <br>
 
-#### Service 2 & 3
+#### Service 2 and 3
 
 These will both generate a random “Object”. In this case, the objects are:
 - The region that the Pokémon comes from e.g. Kanto or Johto.
@@ -61,7 +69,7 @@ This service will also create an “Object” however this “Object” must be 
 ---
 <br>
 
-### Continuous Integration/Continuous Development Pipeline
+### CI-CD Pipeline
 
 The tech stack I used for this project is as follows: 
 
@@ -80,23 +88,32 @@ The key components of the Continuous Integration/Continuous Development (CI/CD) 
 
 ![Image of CI/CD pipeline](./images/ci-cd-pipeline.png)
 <br><br>
+This concept is developed further [below.](#jenkins-pipeline)
+<br><br>
 
 ### Services Diagram
 
-The services that are built using Docker Compose can be described like this:
+The services that are built using Docker Compose can be described in the image below. The steps are as follows:
+1.	Service 1 will send a GET request to service 2 to "GET" a random Pokémon region. 
+2.	Service 1 will then send a GET request to service 3 to get a random Pokémon type. 
+3.	Service 1 then combines the two objects into a dictionary which is sent as the payload in a POST request to 		service 4. 
+4.	Service 4 will unwrap the payload and use the Pokémon region and type to find a predefined Pokémon name that is 	attached to that type and region. 
+5.	Service 4 will then return the Pokémon name back to service 1, where it will be used to display the randomly 		generated Pokémon to the user.
 <br>
 
 ![Image of services](./images/services.png)
 <br>
 
 Note that this includes the 4 key services as defined above and another 2 services: a MYSQL database for persisting data, and an NGINX reverse proxy to forward client requests.
+<br><br>
 
 ### Infrastructure Diagram
 
-The layout of the GCP virtual machines and how they relate to the user can be described like this:
+The layout of the GCP virtual machines and how they relate to the user can be described in the image below. The NGINX load balancer acts as a gateway to the application for the user, and redirects the user to the VM which has the least connections. In this way, the connections and work to be done will be balanced evenly across the pool of virtual machines in the Docker swarm:
 <br>
 
 ![Image of infrastructure](./images/infrastructure.png)
+<br><br>
 
 ### Risk Assessment
 
@@ -149,7 +166,29 @@ Here is the final entity diagram, which gradually grew throughout the project as
 
 ### Jenkins Pipeline
 
+Below we have a completed Jenkins pipeline built. We can break this down into stages: 
+
+1.	"Declarative: Checkout SCM"<br>
+	This is where Jenkins will read the most recent webhook delivery sent from the source GitHub repo and analyse any changes/new commits to the source code.
+
+2.	"Install Dependencies"<br>
+	This is where Jenkins will install Docker and Ansible on the VM where Jenkins itself is being hosted.
+
+3.	"Run Unit Tests"<br>
+	In this section, Jenkins will install further dependencies such as python3 and python3-venv and then activate a virtual environment in which to carry out unit testing. The dependencies needed for each individual service to run are now installed before finally running pytest which tests each service and produces a Cobertura coverage report and JUnit test report.
+
+4.	"Build and Push Images"<br>
+	Jenkins will use the docker-compose.yaml file to build each service into a docker image before then pushing the images up to Docker Hub.
+
+5. "Configure Swarm"<br>
+	This is where Jenkins runs an Ansible playbook, which configures the 4 VMs that we need for the Docker Swarm - those being the NGINX load balancer, swarm manager, swarm worker 1, and swarm worker 2. More specifically, Jenkins installs NGINX onto the load balancer, installs Docker onto the swarm manager and workers, initialises the swarm on the swarm manager VM, and finally gets the worker VMs to join the Docker swarm.
+
+6. "Deploy Stack"<br>
+	The last section of the pipeline is where Jenkins deploys the Docker stack onto the swarm manager VM using the docker-compose.yaml file and pulling down the Docker images from Docker Hub. When the stack is built, it will then automatically deploy across the Docker swarm (manager and workers), and then the application will be accessible to the user from port 80 of the load balancer VM.
+<br><br>
+
 ![Jenkins Pipeline](./images/jenkins-pipeline.png)
+<br><br>
 
 ### Unit Testing with CI server
 
@@ -163,15 +202,17 @@ Here is the Cobertura coverage report, which shows the test coverage across all 
 ![Cobertura](./images/cobertura.png)
 <br><br>
 
-Here is the JUnit test output, which reports 0 failures for every function in every test class:
+Here is the JUnit test output, which reports 0 failures for every function in every test class in every unit test file:
 
 ![JUnit](./images/junit.png)
 <br><br>
 
-Here is the webhook configured to trigger a Jenkins build once there has been a push to GitHub. This allows for automated testing for every change that is made to the source code:
+Here is the webhook configured to trigger a Jenkins build once there has been a push to GitHub. This allows for automated testing for every change that is made to the source code. This capture is from the GitHub side of the webhook:
 
 ![GitHub Webhook](./images/github-webhook.png)
 <br><br>
+
+Here is the webhook from the Jenkins side, which reads the changes made to the GitHub repo:
 
 ![Jenkins-side Webhook](./images/jenkins-webhook.png)
 
@@ -179,33 +220,56 @@ Here is the webhook configured to trigger a Jenkins build once there has been a 
 
 ### Refactoring
 
-[Insert here stuff about storing images locally to improve speed.]
+Throughout the project, I experimented with ways to improve my code and application performance.
 
-[Insert here stuff about changing code for forms in application/routes to "order_attr" dictionary which simplified code and boosted test coverage]
+1.	Instead of using long web links to the images of each Pokémon, I trialled storing them locally to see if that 		boosted the speed of the application. There was a noticable boost in loading speed when I tested this on my 		development VM using Docker compose. However, when trialled in a Jenkins build, the images failed to load. This 	might be explained by the Pokémon image files failing to save to the Docker images that were pushed up to 			Docker Hub.
 
-[Delete Selenium and unnneccesary dependencies]
+2.	After creating the base functionality of the application, I decided to add forms to allow the user to filter 		the Pokémon results. This was a nice addition, however, my initial code to implement this functionality was 		both hard to read and also lowered the test coverage significantly (from 95% to 86%) due to the amount of lines 	used:
+	<br><br>
+	![Initial Form Implementation](./images/initial_forms.png)
+	<br><br>
+	To simplify this I created a dictionary "order_attr", which allowed me to cut down the amount of lines by 40%:
+	<br><br>
+	![Updated Form Implementation](./images/updated_forms.png)
+	<br>
+	The affect this had on the test coverage was a rise from 86% to 94%. From here I was able to write a unit test specifically for the forms ("test_form") which raised the coverage further to 98%.
+
 <br><br>
 
 ### Front-End
 
+Here is what the user sees when they first open the application:
+
 ![Start Page](./images/start-page.png)
 <br><br>
+
+When the user clicks on a Poké Ball, they will be redirected to the home page. This is where they will see the Pokémon that they have received:
 
 ![Home Page](./images/home-page.png)
 <br><br>
 
+The user can now click 1 of the 3 Poké Balls towards the top of the screen to receive another Pokémon. The more clicks, the more Pokémon will be added to the list:
+
 ![Home Page 2](./images/home-page2.png)
 <br><br>
 
+The user can filter the list of Pokémon by region or type and order the list by name or number using the drop down menus towards the top right of the page. The user may also delete each result by clicking on the '❌' icon at the top right corner of every Pokémon result.
+
 ![Home Page 3](./images/home-page3.png)
 
-<br>
+<br><br>
 
 ## Footer
 ---
 <br>
 
 ### Future Improvements
+
+For future sprints I would:
+*	Implement integration testing with Selenium.
+*	Add a user login feature to personalise the user experience.
+*	Implement full CRUD functionality.
+*	Add the entire catalogue of Pokémon from every region to this application, while displaying more stats and 			attributes for each Pokémon.
 
 <br>
 
