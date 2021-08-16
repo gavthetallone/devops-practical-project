@@ -3,7 +3,8 @@ import random
 
 app = Flask(__name__)
 
-poke_type = ["Fire", "Water", "Grass"]
+# poke_type = ["Fire", "Water", "Grass"]
+poke_type = ["Psychic", "Fighting", "Dragon"]
 
 @app.route("/get/pokemon_type")
 def get_type():
