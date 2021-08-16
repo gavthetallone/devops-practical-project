@@ -3,27 +3,45 @@ import random
 
 app = Flask(__name__)
 
+# poke_dict_region = {
+#         "Kanto" : {
+#             "Fire" : "Charmander", 
+#             "Water" : "Squirtle", 
+#             "Grass" : "Bulbasaur"
+#         },
+#         "Johto" : {
+#             "Fire" : "Cyndaquil",
+#             "Water" : "Totodile",
+#             "Grass" : "Chikorita"
+#         },
+#         "Hoenn" : {
+#             "Fire" : "Torchic",
+#             "Water" : "Mudkip",
+#             "Grass" : "Treecko"
+#         },
+#         "Sinnoh" : {
+#             "Fire" : "Chimchar",
+#             "Water" : "Piplup",
+#             "Grass" : "Turtwig"
+#         }
+# }
+
 poke_dict_region = {
-        "Kanto" : {
-            "Fire" : "Charmander", 
-            "Water" : "Squirtle", 
-            "Grass" : "Bulbasaur"
+        "Unova" : {
+            "Psychic" : "Elgyem",
+            "Fighting" : "Mienfoo",
+            "Dragon" : "Axew"
         },
-        "Johto" : {
-            "Fire" : "Cyndaquil",
-            "Water" : "Totodile",
-            "Grass" : "Chikorita"
+        "Kalos" : {
+            "Psychic" : "Espurr",
+            "Fighting" : "Pancham",
+            "Dragon" : "Goomy"
         },
-        "Hoenn" : {
-            "Fire" : "Torchic",
-            "Water" : "Mudkip",
-            "Grass" : "Treecko"
+        "Alola" : {
+            "Psychic" : "Cosmog",
+            "Fighting" : "Crabrawler",
+            "Dragon" : "Jangmo-o"
         },
-        "Sinnoh" : {
-            "Fire" : "Chimchar",
-            "Water" : "Piplup",
-            "Grass" : "Turtwig"
-        }
 }
 
 @app.route("/post/name", methods=['POST'])

@@ -12,8 +12,8 @@ class TestResponse(TestBase):
 
     def test_post_name(self):
 
-        region = "Kanto"
-        pokemon_type = "Grass"
+        region = "Unova"
+        pokemon_type = "Psychic"
 
         payload = {'region' : region, 'pokemon_type' : pokemon_type}
         response = self.client.post(url_for('post_name'), json=payload)
