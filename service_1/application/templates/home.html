@@ -112,6 +112,7 @@
     </p>
 
     {% if route == "home" %}
+
     <div style="float:right; padding-top: 2px; padding-right: 30px;">
     <form action="" method="POST">
     {{ form.poke_type.label }}  {{ form.poke_type }}
@@ -136,7 +137,7 @@
         <br>
         &emsp;&emsp;&emsp;
         {{ "Congratulations, you received a... "}} 
-        
+
         <h2>&emsp;&emsp;&emsp;&emsp;{{ pokemon.name + "!"}}</h2>
                 
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

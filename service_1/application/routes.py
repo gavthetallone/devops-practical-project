@@ -1,7 +1,7 @@
 from . import app, db
 from .models import Pokemon
 from .forms import PokeForm
-from flask import request, render_template, jsonify, json
+from flask import redirect, url_for, request, render_template, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import random
@@ -181,7 +181,6 @@ def home():
     else:
         pokemons = Pokemon.query.order_by(Pokemon.id.desc()).all()
 
-    
     return render_template("home.html", pokemons=pokemons, new_pokemon=new_pokemon, form=form, route=route)
 
 
